@@ -1,5 +1,5 @@
 var dictionary = {};
-
+var iterator = 0;
 $(function () {
     // Encrypt & Compress
     var inputTextC = $("#inputTextC");
@@ -14,10 +14,12 @@ $(function () {
             if (dictionary.hasOwnProperty(text[i])) {
                 text[i] = dictionary[text[i]];
             } else {
-                dictionary[text[i]] = i;
+                dictionary[text[i]] = iterator;
                 text[i] = dictionary[text[i]];
+                iterator++;
             }
         }
+        iterator = 0;
         outputTextC.val(text.join(" "));
         outputKeyC.val(JSON.stringify(dictionary));
     });
