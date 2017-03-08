@@ -1,5 +1,5 @@
 var dictionary = {};
-var iterator = 0;
+
 $(function () {
     // Encrypt & Compress
     var inputTextC = $("#inputTextC");
@@ -8,6 +8,7 @@ $(function () {
     var outputKeyC = $("#outputKeyC");
 
     enterButtonC.click(function () {
+        var iterator = 0;
         var text = inputTextC.val();
         text = text.split(" ");
         for (var i = 0; i < text.length; i++) {
@@ -19,9 +20,9 @@ $(function () {
                 iterator++;
             }
         }
-        iterator = 0;
         outputTextC.val(text.join(" "));
         outputKeyC.val(JSON.stringify(dictionary));
+        dictionary = {};
     });
 
     // Decrypt
@@ -34,14 +35,14 @@ $(function () {
         var text = inputTextD.val();
         console.log(text);
         text = text.split(" ");
-        var key = inputKeyD.val();
-        key = JSON.parse(key);
-        key = swap(key);
-        console.log(key);
+        dictionary = inputKeyD.val();
+        dictionary = JSON.parse(dictionary);
+        dictionary = swap(dictionary);
+        console.log(dictionary);
 
         for (var i = 0; i < text.length; i++) {
             console.log(text[i]);
-            text[i] = key[text[i]];
+            text[i] = dictionary[text[i]];
             console.log(text[i]);
         }
         outputTextD.val(text.join(" "));
