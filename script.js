@@ -33,20 +33,15 @@ $(function () {
 
     enterButtonD.click(function () {
         var text = inputTextD.val();
-        console.log(text);
         text = text.split(" ");
         dictionary = inputKeyD.val();
         dictionary = JSON.parse(dictionary);
         dictionary = swap(dictionary);
-        console.log(dictionary);
 
         for (var i = 0; i < text.length; i++) {
-            console.log(text[i]);
             text[i] = dictionary[text[i]];
-            console.log(text[i]);
         }
         outputTextD.val(text.join(" "));
-        console.log(outputTextD.val());
     });
 });
 
