@@ -55,9 +55,9 @@ $(function () {
             size = val.length + 1;
         }
         if ($(this).prev('.txtSize').length === 0) {
-            $(this).parent().prev('.txtSize').text("Size on file: " + size + " Byte");
+            $(this).parent().prev('.txtSize').text("Size on file: " + size + " Bytes");
         } else {
-            $(this).prev('.txtSize').text("Size on file: " + size + " Byte");
+            $(this).prev('.txtSize').text("Size on file: " + size + " Bytes");
         }
     });
 });
