@@ -21,7 +21,9 @@ $(function () {
             }
         }
         outputTextC.val(text.join(" "));
+        outputTextC.change();
         outputKeyC.val(JSON.stringify(dictionary));
+        outputKeyC.change();
         dictionary = {};
     });
 
@@ -42,6 +44,21 @@ $(function () {
             text[i] = dictionary[text[i]];
         }
         outputTextD.val(text.join(" "));
+        outputTextD.change();
+    });
+
+    // Text size
+    $('textarea').change(function () {
+        var val = $(this).val();
+        var size = 0;
+        if (val.length !== 0) {
+            size = val.length + 1;
+        }
+        if ($(this).prev('.txtSize').length === 0) {
+            $(this).parent().prev('.txtSize').text("Size on file: " + size + " Byte");
+        } else {
+            $(this).prev('.txtSize').text("Size on file: " + size + " Byte");
+        }
     });
 });
 
